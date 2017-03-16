@@ -6,14 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://styletang.github.io">
-  <title>Archives: 2016/11 | StyleTang</title>
+  <title>聊聊RocketMQ-Console | StyleTang</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="StyleTang">
-<meta property="og:url" content="https://styletang.github.io/archives/2016/11/index.html">
+  <meta name="description" content="什么是rocketmq-console-ngrocketmq-console-ng是为incubator-rocketmq量身打造的一个web控制台。通过它我们可以对rocketMQ进行状态查看，配置变更，管理操作各个节点。
+为什么要有rocketmq-console-ng一个系统在线上运行，如果我们无法知道它的状况，进行相应的控制，那是十分危险的。无法知道运行状况的系统就好比一个人被麻醉了的人，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="聊聊RocketMQ-Console">
+<meta property="og:url" content="https://styletang.github.io/2016/11/07/聊聊RocketMQ-Console/index.html">
 <meta property="og:site_name" content="StyleTang">
+<meta property="og:description" content="什么是rocketmq-console-ngrocketmq-console-ng是为incubator-rocketmq量身打造的一个web控制台。通过它我们可以对rocketMQ进行状态查看，配置变更，管理操作各个节点。
+为什么要有rocketmq-console-ng一个系统在线上运行，如果我们无法知道它的状况，进行相应的控制，那是十分危险的。无法知道运行状况的系统就好比一个人被麻醉了的人，">
+<meta property="og:updated_time" content="2017-03-16T13:51:16.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="StyleTang">
+<meta name="twitter:title" content="聊聊RocketMQ-Console">
+<meta name="twitter:description" content="什么是rocketmq-console-ngrocketmq-console-ng是为incubator-rocketmq量身打造的一个web控制台。通过它我们可以对rocketMQ进行状态查看，配置变更，管理操作各个节点。
+为什么要有rocketmq-console-ng一个系统在线上运行，如果我们无法知道它的状况，进行相应的控制，那是十分危险的。无法知道运行状况的系统就好比一个人被麻醉了的人，">
   
     <link rel="alternative" href="/atom.xml" title="StyleTang" type="application/atom+xml">
   
@@ -131,36 +138,169 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-聊聊RocketMQ-Console" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/11/07/聊聊RocketMQ-Console/" class="archive-article-date">
-  	<time datetime="2016-11-07T09:00:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-07</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/11/07/聊聊RocketMQ-Console/">聊聊RocketMQ-Console</a>
+    <h1 class="article-title" itemprop="name">
+      聊聊RocketMQ-Console
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2016/11/07/聊聊RocketMQ-Console/" class="archive-article-date">
+  	<time datetime="2016-11-07T09:00:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-11-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="什么是rocketmq-console-ng"><a href="#什么是rocketmq-console-ng" class="headerlink" title="什么是rocketmq-console-ng"></a>什么是rocketmq-console-ng</h2><p>rocketmq-console-ng是为<a href="https://github.com/apache/incubator-rocketmq" target="_blank" rel="external">incubator-rocketmq</a>量身打造的一个web控制台。通过它我们可以对rocketMQ进行状态查看，配置变更，管理操作各个节点。</p>
+<h2 id="为什么要有rocketmq-console-ng"><a href="#为什么要有rocketmq-console-ng" class="headerlink" title="为什么要有rocketmq-console-ng"></a>为什么要有rocketmq-console-ng</h2><p>一个系统在线上运行，如果我们无法知道它的状况，进行相应的控制，那是十分危险的。无法知道运行状况的系统就好比一个人被麻醉了的人，流了很多血，却无法自知自救，很快就会go die。</p>
+<p>系统在追求高性能、高可用的同时，复杂性也会提高，RocketMQ是一个相对复杂的消息中间件，对它的管理也尤为重要。目前rocketMq已经提供了一个功能相对齐全的<a href="https://github.com/alibaba/RocketMQ/wiki/CLI-Admin-Tool" target="_blank" rel="external">CLI Admin Tool</a>,让我们进行rocketMQ的查看与控制。命令行的弊端就是不容易上手，越是复杂的系统，指令越是繁多。也因此rocketMq也有一个可视化的<a href="https://github.com/rocketmq/rocketmq-console" target="_blank" rel="external">rocketmq-console</a>,它对一些Cli Admin Tool的方法进行了封装与发展，提供了可视化的操作界面，更加方便了我们对rocketMQ的管理。</p>
+<h4 id="我们的目标是在这个的基础上，走的更远。"><a href="#我们的目标是在这个的基础上，走的更远。" class="headerlink" title="我们的目标是在这个的基础上，走的更远。"></a>我们的目标是在这个的基础上，走的更远。</h4><h4 id="在不久后的将来，你将会用到一个功能更强大，易用性更高的控制台。"><a href="#在不久后的将来，你将会用到一个功能更强大，易用性更高的控制台。" class="headerlink" title="在不久后的将来，你将会用到一个功能更强大，易用性更高的控制台。"></a>在不久后的将来，你将会用到一个功能更强大，易用性更高的控制台。</h4><h2 id="那么问题来了，什么样的console是个好console？"><a href="#那么问题来了，什么样的console是个好console？" class="headerlink" title="那么问题来了，什么样的console是个好console？"></a>那么问题来了，什么样的console是个好console？</h2><h2 id="需要考虑的点"><a href="#需要考虑的点" class="headerlink" title="需要考虑的点"></a>需要考虑的点</h2><ul>
+<li><p>1.国际化<br>能让更多的人很方便的用起来</p>
+</li>
+<li><p>2.产品的概念<br>不仅仅是个工具，它应该是个完善的产品。使用rocketMQ的人几乎都会使用它，那么功能更强大，交互更方便、灵活，易用性高，人性化是十分必要的。说白了就是要好用</p>
+</li>
+<li><p>3.UI美观<br>好的UI让人赏心悦目，心情舒畅。</p>
+</li>
+<li><p>4.技术选型<br>技术更加通用，而不是小众的技术。这样有利于大家一起维护。</p>
+</li>
+<li><p>5.代码质量<br>谁都喜欢阅读以及完善干净的代码，需要有一个好的设计，保证代码的质量</p>
+</li>
+</ul>
+<h2 id="一个rocketMQ-console需要具备的点"><a href="#一个rocketMQ-console需要具备的点" class="headerlink" title="一个rocketMQ-console需要具备的点"></a>一个rocketMQ-console需要具备的点</h2><p>从功能上入手，从产品使用者的层面进行分析。</p>
+<ul>
+<li>作为业务开发人员：</li>
+</ul>
+<p>可能更多的关注自己发送/接受消息的投递/消费情况。我的消息发成功了吗？都有谁消费？能发个测试消息吗？为什么消费失败了。。等等</p>
+<ul>
+<li>作为rocketMQ的管理员：</li>
+</ul>
+<p>可能更多的关注我们有哪些节点，各个broker现在状态如何？投递消息有多少延迟？哪些消息积压了？。。等等</p>
+<h3 id="那么从使用习惯和功能划分上看，可以分为以下一些模块："><a href="#那么从使用习惯和功能划分上看，可以分为以下一些模块：" class="headerlink" title="那么从使用习惯和功能划分上看，可以分为以下一些模块："></a>那么从使用习惯和功能划分上看，可以分为以下一些模块：</h3><h4 id="Cluster管理"><a href="#Cluster管理" class="headerlink" title="Cluster管理"></a>Cluster管理</h4><ul>
+<li>1.集群的节点分布（cluster-broker(master/slave)）</li>
+<li>2.每一个broker节点的运行状态</li>
+<li>3.每一个broker节点的配置信息</li>
+</ul>
+<h4 id="Topic管理"><a href="#Topic管理" class="headerlink" title="Topic管理"></a>Topic管理</h4><ul>
+<li>1.Topic列表（分页/筛选）</li>
+<li>2.Topic状态及路由 （对应的broker/queue/offset）</li>
+<li>3.这个Topic对应的消费组及消费状态</li>
+<li>4.Topic的配置查看</li>
+<li>5.Topic的添加与修改（修改基于配置查看）</li>
+<li>6.手动发送一个此主题的自定义消息</li>
+<li>7.重置次消息消费位点（不管consumer在线与否）</li>
+<li>8.删除这个topic（删除哪些数据，何时生效）</li>
+</ul>
+<h4 id="Producer管理"><a href="#Producer管理" class="headerlink" title="Producer管理"></a>Producer管理</h4><ul>
+<li>1.Producer列表（分页/筛选）(目前似乎不好做)</li>
+<li>2.Producer的client版本信息以及host:port</li>
+</ul>
+<h4 id="Consumer管理"><a href="#Consumer管理" class="headerlink" title="Consumer管理"></a>Consumer管理</h4><ul>
+<li>1.Consumer列表（分页/筛选）</li>
+<li>2.Consumer的Client的详细信息</li>
+<li>3.此Consumer下所有Topic的消费明细</li>
+<li>4.Consumer的配置查看</li>
+<li>5.Consumer的添加与修改（修改基于配置查看）</li>
+<li>6.删除这个Consumer（删除哪些数据，何时生效）</li>
+</ul>
+<h4 id="Message管理"><a href="#Message管理" class="headerlink" title="Message管理"></a>Message管理</h4><ul>
+<li>1.按照时间区间和Topic查询</li>
+<li>2.按照Topic和Key查询</li>
+<li>3.按照MessageId（offsetMessageId）查询</li>
+<li>4.Message查看界面友好信息全</li>
+<li>5.对应的Message的消费情况（成功/为何失败）</li>
+<li>6.往这个Message对应的指定Group再次发送消息</li>
+</ul>
+<h4 id="Config管理-这个很少用-我也不熟-是否需要？-（TO-BE-DONE）"><a href="#Config管理-这个很少用-我也不熟-是否需要？-（TO-BE-DONE）" class="headerlink" title="Config管理(这个很少用,我也不熟,是否需要？)（TO BE DONE）"></a>Config管理(这个很少用,我也不熟,是否需要？)（TO BE DONE）</h4><ul>
+<li>1.BrokerConfig</li>
+<li>2.NamesvrKvConfig</li>
+</ul>
+<h3 id="如何开发rocketmq-console-ng"><a href="#如何开发rocketmq-console-ng" class="headerlink" title="如何开发rocketmq-console-ng"></a>如何开发rocketmq-console-ng</h3><p>我们目前是基于rocketmq-tools这个jar进行开发的，里面的com.alibaba.rocketmq.tools.admin。MQAdminExt提供了大量console需要的功能，我们可以现在这个的基础下进行优化。等第一版有了一个雏形并且稳定之后，再考虑拓展。（毕竟console的数据来源于namesvr/broker/consumer,定制化需求需要暴露特定的方法，改动较大）</p>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;com.alibaba.rocketmq&lt;/groupId&gt;
+    &lt;artifactId&gt;rocketmq-tools&lt;/artifactId&gt;
+    &lt;version&gt;${rocketmq.version}&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre><h3 id="技术选型"><a href="#技术选型" class="headerlink" title="技术选型"></a>技术选型</h3><p>（一个Java版本的console 个人感觉spring-boot+bootstrap+angularjs还是不错的）</p>
+<p>大家一起商量吧~</p>
+<h3 id="问题点"><a href="#问题点" class="headerlink" title="问题点"></a>问题点</h3><p>最近也有一些朋友提出了一些目前console 或者说Admin Cli的问题（需求），看起来也是需要权衡和完善的。</p>
+<p>比如：</p>
+<ul>
+<li>删除了Topic但是还是会被消费</li>
+<li>想看单纯的rocketMQ的硬盘占用情况</li>
+</ul>
+<h5 id="我理解应该是还有很多需求和建议的，希望大家多多反馈了。只有这样产品才会越来越好。"><a href="#我理解应该是还有很多需求和建议的，希望大家多多反馈了。只有这样产品才会越来越好。" class="headerlink" title="我理解应该是还有很多需求和建议的，希望大家多多反馈了。只有这样产品才会越来越好。"></a>我理解应该是还有很多需求和建议的，希望大家多多反馈了。只有这样产品才会越来越好。</h5><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>那么综上所述，我们能有一个大致的RoadMap了</p>
+<h1 id="Roadmap"><a href="#Roadmap" class="headerlink" title="Roadmap"></a>Roadmap</h1><h2 id="Cluster"><a href="#Cluster" class="headerlink" title="Cluster"></a>Cluster</h2><ul>
+<li>[ ] ClusterController<ul>
+<li>[ ] Cluster OverView</li>
+<li>[ ] Broker Status</li>
+<li>[ ] Broker Config</li>
+</ul>
+</li>
+</ul>
+<h2 id="Topic"><a href="#Topic" class="headerlink" title="Topic"></a>Topic</h2><ul>
+<li>[ ] TopicController<ul>
+<li>[ ] TopicList</li>
+<li>[ ] Topic Status</li>
+<li>[ ] Topic Router</li>
+<li>[ ] View Topic Config</li>
+<li>[ ] Topci Add / Update</li>
+<li>[ ] Send A Test Topic</li>
+<li>[ ] Reset ConsumerGroup’s Offset Under This Topic</li>
+<li>[ ] Delete This Topic</li>
+</ul>
+</li>
+</ul>
+<h2 id="Producer"><a href="#Producer" class="headerlink" title="Producer"></a>Producer</h2><ul>
+<li>[ ] ProducerController<ul>
+<li>[ ] ProducerList</li>
+<li>[ ] Producer Client Info</li>
+</ul>
+</li>
+</ul>
+<h2 id="Consumer"><a href="#Consumer" class="headerlink" title="Consumer"></a>Consumer</h2><ul>
+<li>[ ] ConsumerController<ul>
+<li>[ ] ConsumerList</li>
+<li>[ ] Consumer Client Info</li>
+<li>[ ] Topic Consume Status Under This Consumer Group</li>
+<li>[ ] View Consumer Config</li>
+<li>[ ] Consumer Add / Update</li>
+<li>[ ] Delete This Consumer</li>
+</ul>
+</li>
+</ul>
+<h2 id="Message"><a href="#Message" class="headerlink" title="Message"></a>Message</h2><ul>
+<li>[ ] MessageController<ul>
+<li>[ ] Query By Topic And Time</li>
+<li>[ ] Query By Topic And Key</li>
+<li>[ ] Query By MessageId(OffsetMessageId)</li>
+<li>[ ] A Nice Message Detail View</li>
+<li>[ ] Message Consume Status</li>
+<li>[ ] Resend Message To A Consume Group</li>
+</ul>
+</li>
+</ul>
+<h2 id="Config-todo-disscuss-is-it-necessary"><a href="#Config-todo-disscuss-is-it-necessary" class="headerlink" title="Config (todo disscuss is it necessary)"></a>Config (todo disscuss is it necessary)</h2><ul>
+<li>[ ] ConfigController<ul>
+<li>[ ] BrokerConfig</li>
+<li>[ ] NamesvrKvConfig</li>
+</ul>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -172,19 +312,110 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=https://styletang.github.io/2016/11/07/聊聊RocketMQ-Console/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/03/14/图解RocketMQ/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          图解RocketMQ
+        
+      </div>
+    </a>
   
   
-    </div></section>
+</nav>
+
+
+
+
+
+
+  
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="聊聊RocketMQ-Console" data-title="聊聊RocketMQ-Console" data-url="https://styletang.github.io/2016/11/07/聊聊RocketMQ-Console/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"StyleTang"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
   
 
-    
+
 
 
           </div>
@@ -207,8 +438,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
